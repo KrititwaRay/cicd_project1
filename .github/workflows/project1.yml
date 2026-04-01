@@ -14,3 +14,17 @@ jobs:
         run: npm ci
       - name: Success message
         run: echo "✅ Project setup is working"
+  deploy:
+    needs: test-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with: 
+          node-version: 24
+      - name: Install dependencies
+        run: npm ci
+      - name: Testing sequence jobs
+        run: echo "✅ Testing sequence"
